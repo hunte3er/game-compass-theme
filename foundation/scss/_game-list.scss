@@ -1,0 +1,173 @@
+.accordion{
+	position: relative;
+	overflow: hidden;
+}
+
+.accordion-background,{
+	margin: 0;
+}
+
+.accordion-background > .high-light-border{
+	position: absolute;
+	width: 100%;
+	height: 101%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.accordion-navigation{
+	position: relative;
+	top: 0;
+	z-index: 2;
+}
+
+.related-articles{
+	list-style: none;
+	margin:0;
+}
+
+.accordion .accordion-navigation > .content,
+.accordion dd > .content{
+	z-index: 0;
+	background:rgba(0,0,0,0.70);
+}
+
+.accordion > .content-lower > .button{
+	display: block;
+}
+
+@media #{$small-up}{ 
+	.accordion-background,
+	.accordion-navigation > a{
+		height: 4rem;
+	}
+	
+	.accordion-background{
+		top:0;
+		position:absolute;
+	}
+}
+
+@media #{$small-only and $medium-only}{	
+	.accordion .accordion-navigation > .content, 
+	.accordion dd > .content {
+		border-top: 0px solid #000;
+		border-right: 1px solid #000;
+		border-left: 1px solid #000;
+		border-bottom: 1px solid #000;
+		@include inner-glow(0px,1px,255,255,255,0.07);		
+	}
+}
+
+@media #{$large-up}{ 
+	.related-articles{
+		font-size: 1.3em;
+	}
+
+	.related-articles .accordion .accordion-navigation > a > h2,
+	.related-articles .accordion .accordion-navigation > .content-lower{
+		height:22%;
+		min-height:22%;
+		max-height:22%;
+	}
+	 
+	.related-articles .accordion .accordion-navigation .content-inner {
+		-webkit-line-clamp: 4;
+	}
+	 
+	.related-articles .accordion .accordion-navigation{ 
+		top: 78%;
+	}
+
+	.related-articles .accordion:hover > .accordion-navigation{ 
+		@include translateY(-78%); 
+	}
+	
+	.related-articles .accordion .accordion-navigation > a{
+		margin-bottom: 0.5em;
+	}
+	
+	.accordion .accordion-background,
+	.accordion .accordion-navigation > a{
+		height: auto;
+	}
+	
+	.accordion .accordion-background{
+		top:0;
+		position:relative;
+	}
+	
+	.accordion .accordion-navigation{
+		position: absolute;
+		top: 77%;
+		background-color: rgba(0,0,0,0.8);
+		overflow: hidden;
+		height: 100%;
+		@include single-transition(all, 0.3s, ease-in, 0s);
+	}
+	
+	.accordion .accordion-navigation > .content, 
+	.accordion dd > .content {
+		display: block;
+	}
+
+	.accordion:hover > .accordion-navigation{ 
+		@include translateY(-77%); 
+	}
+	
+	.accordion .accordion-navigation > a > h2,
+	.accordion .accordion-navigation > .content-lower{
+		height: 18%;
+		min-height: 18%;
+		max-height: 18%;
+		padding: 0;
+		overflow: hidden;
+		margin: 0;
+	}
+	
+	.accordion .accordion-navigation .content-inner {
+		height: 60%;
+		min-height: 60%;
+		max-height: 60%;
+		padding: 0;
+		overflow: hidden;
+		display: block; /* Fallback for non-webkit */
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	.accordion-navigation h2{
+		font-size: 1.1em;
+	}
+	
+	.accordion-navigation > .entry-meta{
+		margin-top: -1%;
+		display: block;
+	}
+	
+	.accordion .accordion-navigation > .content, 
+	.accordion dd > .content,
+	.accordion .accordion-navigation > a, 
+	.accordion dd > a{
+		margin: 0;
+		padding: 0;
+	}
+	
+	.accordion dd,
+	.accordion-navigation{
+		padding: 1em;
+	}
+	
+	.accordion .accordion-navigation > a,
+	.accordion .accordion-navigation > a:hover, 
+	.accordion dd > a, 
+	.accordion dd > a:hover,
+	.accordion .accordion-navigation > .content, 
+	.accordion dd > .content{
+		background: none;
+	}
+}

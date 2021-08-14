@@ -1,0 +1,470 @@
+@import "compass/css3";
+
+.breadcrumbs{
+	margin-bottom: $column-gutter;
+}
+
+.breadcrumbs > *{
+	font-size: 1em;
+	line-height: 1em;
+}
+
+table {
+    table-layout:fixed;
+    width:100%;
+}
+
+button.slick-prev{
+	left: 10px;
+}
+
+button.slick-next{
+	right: 10px;
+}
+
+@mixin glow($outer-blur,$outer-spread,$outer-r,$outer-g,$outer-b,$outer-a){
+	-webkit-box-shadow: 0px 0px $outer-blur $outer-spread rgba($outer-r,$outer-g,$outer-b,$outer-a);
+	-moz-box-shadow: 0px 0px $outer-blur $outer-spread rgba($outer-r,$outer-g,$outer-b,$outer-a);
+	box-shadow: 0px 0px $outer-blur $outer-spread rgba($outer-r,$outer-g,$outer-b,$outer-a);
+}
+
+@mixin inner-glow($inner-blur,$inner-spread,$inner-r,$inner-g,$inner-b,$inner-a){
+	-webkit-box-shadow: inset 0px 0px $inner-blur $inner-spread rgba($inner-r,$inner-g,$inner-b,$inner-a);
+	-moz-box-shadow: inset 0px 0px $inner-blur $inner-spread rgba($inner-r,$inner-g,$inner-b,$inner-a);
+	box-shadow: inset 0px 0px $inner-blur $inner-spread rgba($inner-r,$inner-g,$inner-b,$inner-a);
+}
+
+@mixin outer-and-inner-glow($outer-blur,$outer-spread,$outer-r,$outer-g,$outer-b,$outer-a,$inner-blur,$inner-spread,$inner-r,$inner-g,$inner-b,$inner-a){
+	-webkit-box-shadow: 0px 0px $outer-blur $outer-spread rgba($outer-r,$outer-g,$outer-b,$outer-a), inset 0px 0px $inner-blur $inner-spread rgba($inner-r,$inner-g,$inner-b,$inner-a);
+	-moz-box-shadow: 0px 0px $outer-blur $outer-spread rgba($outer-r,$outer-g,$outer-b,$outer-a), inset 0px 0px $inner-blur $inner-spread rgba($inner-r,$inner-g,$inner-b,$inner-a);
+	box-shadow: 0px 0px $outer-blur $outer-spread rgba($outer-r,$outer-g,$outer-b,$outer-a), inset 0px 0px $inner-blur $inner-spread rgba($inner-r,$inner-g,$inner-b,$inner-a);
+}
+
+@mixin hborder-gradient( $start: #f1f1f1, $from: 0%, $stop: #d9d9d9, $to: 100% ) {
+	border-color: $start;
+	border-image: -webkit-gradient(linear, left top, right top, from($start), to($stop));
+	border-image: -moz-linear-gradient(left, $start $from, $stop $to);
+	border-image: -moz-gradient(left, $start $from, $stop $to);
+	border-image: -webkit-linear-gradient(left, $start $from,$stop $to);
+	border-image: -o-linear-gradient(left, $start $from,$stop $to);
+	border-image: -ms-linear-gradient(left, $start $from,$stop $to);
+	border-image: linear-gradient(to right, $start $from,$stop $to);
+}
+
+$icon_text_font_size: 1em;
+
+.high-light-border{
+	border: 1px solid #000;
+	margin-bottom: $column-gutter;
+	@include inner-glow(0px,1px,255,255,255,0.07);
+}
+
+.top-bar-section ul li > a{
+	font-size: 1.5em;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+	line-height: 43px;
+}
+
+.entry-meta,
+.vcard .fn{
+	font-size: 0.75rem;
+}
+
+.entry-meta{	
+	padding: 0 0 0.3rem 0.75rem;
+}
+
+.breadcrumbs > * a{
+	color: $primary-color !important;
+}
+
+.screen-reader-text{
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+
+input[type="search"]{
+	@include border-radius(30px);
+	margin: 1rem 0;
+}
+
+.search-icon,
+.search-icon > a{
+	height: $tabbar-height;
+	width: $tabbar-height;
+}   
+
+.search-bar{
+	display:none;
+}
+
+.button-container .button{
+	display: block;
+	margin: $column-gutter/2 0;
+}
+
+.icon-row,
+.icon-row > .icon{	
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.icon-row > .icon{
+	height: $icon_text_font_size;
+	width: $icon_text_font_size;
+	background-size: $icon_text_font_size $icon_text_font_size;
+}
+
+.icon-row > .icon-text{
+	font-size: $icon_text_font_size;
+}
+
+.vcard{
+	border: 0px;
+	padding: 0;
+	margin: 0;
+}
+
+.off-screen{
+	// position: absolute;
+	// left: 100%;
+	z-index: 3;  
+	
+	//-moz-animation: movethisbitch 3s ease infinite;	
+	//-webkit-animation: movethisbitch 3s ease infinite;	
+	//-o-animation: movethisbitch 3s ease infinite;	
+	//animation: movethisbitch 3s ease infinite;
+}
+
+.figure-wrapper{
+    background-color: rgba(0,0,0,0.8); 
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 1px;
+}
+
+.figure-wrapper:hover .figure-caption-wrapper{ 
+	@include translateY(-77%); 
+}
+
+.figure-image{
+	margin:0;
+	position:relative;
+}
+
+.figure-image > .high-light-border{
+	position: absolute;
+	width: 100%;
+	height: 101%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.figure-caption-wrapper h2{
+	font-size: 1.1em;
+}
+
+.figure-caption-wrapper{ 
+	padding: 1em;
+	background: inherit;
+    position: absolute;  
+	z-index: 2;
+    color: $body-font-color;  
+	height: 100%;
+	top:77%;
+	@include single-transition(all, 0.3s, ease-in, 0s); 
+}
+
+.excerpt,
+.excerpt:hover,
+.excerpt:visited,
+.excerpt:active,
+.excerpt:focus{
+	color: $body-font-color;
+	text-decoration: none;
+}
+
+.figure-caption-wrapper .button{
+	display: block;
+}
+
+.figure-caption-upper,
+.figure-caption-bottom{
+	height: 18%;
+	min-height: 18%;
+	max-height: 18%;
+	padding: 0;
+	overflow: hidden;
+	margin: 0;
+}
+
+.figure-caption-middle{
+	height: 60%;
+	min-height: 60%;
+	max-height: 60%;
+	padding: 0;
+	overflow: hidden;
+	margin-bottom: 4%;
+	display: block; /* Fallback for non-webkit */
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.figure-caption-middle > .entry-meta{
+	margin-top: -1%;
+	display: block;
+}
+
+.game-profile th{
+	padding: 0;
+}
+
+.game-profile{
+	border-collapse: collapse;
+	margin-bottom: $column-gutter;
+}
+.table-wrapper{
+	position: relative;
+	max-width: 100%;
+}
+
+.table-wrapper::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border: 1px solid #000;
+	@include inner-glow(0px,1px,255,255,255,0.07);
+}
+
+.game-profile-header{
+	position: relative;
+}
+
+.game-profile-image{
+	margin: 0;
+}
+
+.game-profile-caption{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.8); 
+	padding: 0 0.5em;
+}
+
+.game-profile-caption h3{
+	margin: 0.5em 0;
+}
+
+.game-profile tr{	
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.game-profile tr:first-child{	
+    border-top: 0;
+}
+
+.content-container{
+	padding: 0 1em;
+	margin-bottom: $column-gutter;
+	background: $jet;
+	border: 1px solid #000;
+	@include inner-glow(0px,1px,255,255,255,0.07);
+}
+
+.feature-list li::before {
+    content: '✔';   
+	margin-left: -1em; margin-right: .100em;
+	color: green;
+	text-shadow:1px 1px 1px #000;
+}
+
+.feature-list{  
+	font-size: 1.5em;
+	// padding-left:20px;
+	text-indent:2px;
+	list-style: none;
+	list-style-position:outside;   
+}
+
+ul.page-numbers {
+    list-style: none;
+    margin: 0;
+}
+
+.page-numbers:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+ul.page-numbers li {
+    display: block;
+    float: left;
+    margin: 0 4px 4px 0;
+    text-align: center;
+}
+
+.page-numbers a,
+.page-numbers span {
+    display: block;
+    padding: 0 6px;
+    line-height: 1.4;
+    font-size: 1.5em;
+    text-decoration: none;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid #000;
+	@include inner-glow(0px,1px,255,255,255,0.07);
+    color: $body-font-color;
+}
+
+.page-numbers a span { padding: 0 }
+
+.page-numbers a:hover,
+.page-numbers.current,
+.page-numbers.current:hover {
+    color: $secondary-color;
+    background: $primary-color;
+    text-decoration: none;
+}
+
+.page-numbers:hover{ 
+	text-decoration: none 
+}
+
+.onoffswitch {
+	margin-top: 0.3em;
+	float: left;
+    position: relative; 
+	width: 20%;
+    -webkit-user-select:none; 
+	-moz-user-select:none; 
+	-ms-user-select: none;
+	margin-right: 0.5em;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch input[type="checkbox"] + label{
+    display: block; 
+	overflow: hidden; 
+	cursor: pointer;
+	margin: 0;
+	@include border-radius(50px);
+}
+.onoffswitch-inner {
+    display: block; 
+	width: 200%; 
+	margin-left: -100%;
+	@include single-transition(all, 0.3s, ease-in, 0s); 
+}
+.onoffswitch-inner:before, 
+.onoffswitch-inner:after {
+    display: block; 
+	float: left; 
+	width: 50%; 
+	height: 2em; 
+	line-height: 2em;
+	padding: 0; 
+    font-size: 0.5em; 
+	color: $body-font-color; 
+	font-weight: bold;
+    -moz-box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";    
+	padding-left: 9%;
+	padding-top: 1%;
+    background-color: $primary-color; 
+	color: $body-font-color;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 7%;
+    background-color: tint($body-bg, 15%); 
+	color: shade($body-bg, 15%); 
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block !important; 
+	width: 2em;
+	height: 115%;
+    background-color: tint($body-bg, 25%); 
+	@include border-radius(50px);
+    position: absolute; 
+	top: -7%; 
+	bottom: 0; 
+	right: 45%;
+	@include single-transition(all, 0.3s, ease-in, 0s); 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+	@include single-transition(all, 0.3s, ease-in, 0s); 
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+	@include single-transition(all, 0.3s, ease-in, 0s); 
+    right: 0% 
+}
+.filter{	
+	padding: 0 0 0 0.5em;
+	background-color: $jet;
+}
+
+.filter-label{
+	float: left; 
+	width: 70%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.filter:nth-child(odd){
+	background-color: shade($jet, 12%);
+}
+
+.widget-box h3,
+.tag-filter h4{
+	background: $jet;
+	border: 1px solid #000;
+	@include inner-glow(0px,1px,255,255,255,0.07);
+	padding: 0 0.5em;
+	margin: 0;
+}
+
+.tag-filter-body{
+	max-height: 4 * 1.5em;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.mCSB_container.mCS_no_scrollbar_y.mCS_y_hidden{
+	margin-right: 0 !important;
+}
+
+.mCSB_inside>.mCSB_container {
+	margin-right: 16px !important;
+}
+
+.logo{
+	margin: 1em;
+}
